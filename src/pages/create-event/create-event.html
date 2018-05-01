@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Crear evento</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+    <form [formGroup]="createEventForm">
+      <ion-item>
+        <ion-label stacked>Nombre</ion-label>
+        <ion-input formControlName="name" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Descripción</ion-label>
+        <ion-input formControlName="description" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Fecha</ion-label>
+        <ion-datetime formControlName="date" displayFormat="DD-MM-YYYY" [min]="minDate" max="2022-12-31"></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Número invitados</ion-label>
+        <ion-input formControlName="guestNumber" type="number"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <button block ion-button (click)="createEvent()" [disabled]="!createEventForm.valid" color="primary">Registrar evento</button>
+      </ion-item>
+    </form>
+  </ion-list>
+</ion-content>

@@ -1,14 +1,25 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
-</ion-header>
-
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <ion-card>
+    <ion-card-header>
+      Registro
+    </ion-card-header>
+    <form [formGroup]="loginForm">
+      <ion-card-content>
+        <ion-list>
+          <ion-item>
+            <ion-label stacked>Correo</ion-label>
+            <ion-input formControlName="email" type="email"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label stacked>Contraseña</ion-label>
+            <ion-input type="password" formControlName="password"></ion-input>
+          </ion-item>
+          <ion-item>
+            <button block ion-button (click)="loginUser()" [disabled]="!loginForm.valid" color="primary">Registrar usuario</button>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </form>
+  </ion-card>
 </ion-content>

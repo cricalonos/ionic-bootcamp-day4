@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Agregar invitado</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+      </ion-col>
+      <ion-col col-auto>
+        <ion-img width="200" height="200" [src]="picture"></ion-img>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-only (click)="takePicture()">
+          <ion-icon name="md-camera"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-list>
+    <form [formGroup]="guestForm">
+      <ion-item>
+        <ion-label stacked>Nombre</ion-label>
+        <ion-input type="text" formControlName="name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <button block ion-button (click)="addGuest()" [disabled]="!guestForm.valid" color="primary">Registrar invitado</button>
+      </ion-item>
+    </form>
+  </ion-list>
+
+</ion-content>

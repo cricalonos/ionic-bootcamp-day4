@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Listado de eventos</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="goToCreatePage()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <ion-card *ngFor="let event of eventsList$">
+    <ion-card-content (click)="getDetailEvent(event)">
+      {{event.name}}
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Detalle del evento</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-row>
+    <ion-col col-5>
+      <p>
+        <strong>Nombre del evento: </strong>
+      </p>
+    </ion-col>
+    <ion-col col-7>
+      <p ion-text>{{event.name}}</p>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-5>
+      <p>
+        <strong>Descripción: </strong>
+      </p>
+    </ion-col>
+    <ion-col col-7>
+      <p ion-text>{{event.description}}</p>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-5>
+      <p>
+        <strong>Fecha:</strong>
+      </p>
+    </ion-col>
+    <ion-col col-6>
+      <p ion-text>{{event.date | date:'dd-MM-yyyy'}}</p>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-5>
+      <p>
+        <strong>Número invitados: </strong>
+      </p>
+    </ion-col>
+    <ion-col col-7>
+      <p ion-text>{{event.guestNumber}}</p>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-label *ngIf="spaceAvailable"> Aún tienes {{event.guestNumber - guestCount}} cupos disponibles!</ion-label>
+    <ion-label *ngIf="!spaceAvailable"> Ya no tienes cupos disponibles para este evento!</ion-label>
+  </ion-row>
+  <button block ion-button (click)="addGuest()" [disabled]="!spaceAvailable" color="primary"> Agregar invitado</button>
+
+  <ion-card *ngIf="guestCount">
+    <ion-card-header>
+      Listado de invitados
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list *ngFor="let guest of guestsList$">
+        <ion-item>
+          <ion-thumbnail item-start>
+            <img [src]="guest.url">
+          </ion-thumbnail>
+          <h2>{{guest.name}}</h2>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
