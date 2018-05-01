@@ -19,7 +19,9 @@ export class AuthProvider {
    * Método empleado para ralizar la creación de un usuario y su posterior inicio de sesión.
    */
   loginUser(user: User): Promise<any> {
-    return this.angularAuth.auth.createUserWithEmailAndPassword(user.email, user.password);
+    return this.angularAuth.auth.createUserWithEmailAndPassword(user.email, user.password).then((newUser) => {
+      this.db.collection('/users').doc(newUser.uid).set({ mail: user.email });
+    });
   }
 
 }

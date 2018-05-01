@@ -24,7 +24,7 @@ export class CreateEventPage {
       name: ['', Validators.compose([Validators.required, Validators.minLength(2)])],
       description: ['', Validators.compose([Validators.required, Validators.minLength(2)])],
       date: ['', Validators.required],
-      guestNumber: ['', Validators.required]
+      guestNumber: ['', Validators.compose([Validators.required, Validators.min(1)])]
     });
   }
 
